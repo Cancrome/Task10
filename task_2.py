@@ -10,3 +10,11 @@
 --- b'class' - используйте маркировку b''
 --- используйте списки и циклы, не дублируйте функции
 """
+
+import binascii
+
+a = [b'class', b'function', b'method']
+
+for i in a:
+    print(f'Тип переменной: {type(i)} \n'
+          f'Содержание: {binascii.hexlify(i)} \nДлина: {len(i)}')
