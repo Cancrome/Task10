@@ -29,3 +29,4 @@ a_unicode = [
 
 for i in a_unicode:
     print(type(i), i)
+
