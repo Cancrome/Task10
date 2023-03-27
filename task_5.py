@@ -9,17 +9,24 @@
 """
 
 import subprocess
+import chardet
 
-ping= ''
+link1 = 'yandex.ru'
+ARGS = ['ping', link1]
+YA_PING = subprocess.Popen(ARGS, stdout=subprocess.PIPE)
+print('YANDEX: ')
+for line in YA_PING.stdout:
+    result = chardet.detect(line)
+    line = line.decode(result['encoding']).encode('utf-8')
+    print(line.decode('utf-8'))
 
-links = ['ping', 'yandex.ru']
-subproc_ping = subprocess.Popen(links, stdout=subprocess.PIPE)
-for line in subproc_ping.stdout:
-    ping += line.decode('cp866')
 
-links2 = ['ping', 'youtube.com']
-subproc_ping = subprocess.Popen(links2, stdout=subprocess.PIPE)
-for line in subproc_ping.stdout:
-    ping += line.decode('cp866')
-
-print(ping.encode('utf-8').decode('utf-8'))
+print('_' * 20)
+print('YOUTUBE: ')
+link2 = 'youtube.com'
+ARGS = ['ping', link2]
+YA_PING = subprocess.Popen(ARGS, stdout=subprocess.PIPE)
+for line in YA_PING.stdout:
+    result = chardet.detect(line)
+    line = line.decode(result['encoding']).encode('utf-8')
+    print(line.decode('utf-8'))
