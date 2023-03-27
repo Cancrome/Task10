@@ -10,10 +10,18 @@
 придумайте как это сделать
 """
 
-from unidecode import unidecode
+
+def capture(el):
+    try:
+        eval(f"b'{el}'")
+        return True
+    except SyntaxError:
+        return False
+
 
 words = ['attribute', 'класс', 'функция', 'type']
 for i in words:
-    if unidecode(i) != i:
+
+    if capture(i) == 0:
         print(f"Это слово невозможно записать в байтовом "
               f"типе с помощью маркировки b'': ", i)
